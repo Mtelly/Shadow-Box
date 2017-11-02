@@ -10,6 +10,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.extropy.shadowbox.ShadowBoxActivity">
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/showMediumButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="18dp"
+        android:background="@android:color/white"
+        android:text="Easy" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -27,19 +38,20 @@
         android:text="Choose Your Difficulty"
         android:textColor="@android:color/white"
         android:textSize="24sp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/southpaw"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp" />
 
     <Button
-        android:id="@+id/easyButton"
+        android:id="@+id/showTrainingButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
-        android:background="@android:color/white"
-        android:text="Easy"
-        android:layout_above="@+id/showMediumButton"
+        android:layout_above="@+id/button"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="15dp"
+        android:background="@android:color/white"
+        android:text="Training" />
 
     <Button
         android:id="@+id/showHardButton"
@@ -69,10 +81,10 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:textSize="24sp"
-        android:layout_above="@+id/boxTextView"
+        android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="17dp" />
+        android:layout_marginTop="22dp" />
 
     <TextView
         android:id="@+id/textView2"
