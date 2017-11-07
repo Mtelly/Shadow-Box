@@ -26,7 +26,7 @@ public class ShadowBoxActivity extends AppCompatActivity {
         mBoxTextView = (TextView) findViewById(R.id.boxTextView);
         mHard = (Button) findViewById(R.id.showHardButton);
         mMediumButton = (Button) findViewById(R.id.showMediumButton);
-        mEasy = (Button) findViewById(R.id.easyButton);
+        mEasy = (Button) findViewById(R.id.showEasyButton);
         mSouthpaw = (Switch) findViewById(R.id.southpaw);
 
 //Goes to a completely different activity.

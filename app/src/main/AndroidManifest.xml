@@ -26,5 +26,4 @@
                 android:value="com.example.extropy.shadowbox.ShadowBoxActivity"/>
         </activity>
     </application>
-
 </manifest>
