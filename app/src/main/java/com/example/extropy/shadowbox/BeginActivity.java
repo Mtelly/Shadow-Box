@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -28,7 +29,7 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
     private Button mEasy;
     private Button mReset;
     public MediaPlayer mp;
-    private int audioIndex = 0;
+    private int audioIndex = 400;
     private String[] arrayOfAllAudio = null;
     private int[] arrayOfAllAudioInt = null;
     private String[] multipleCombination = null;
@@ -88,7 +89,7 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
                 if(!mp.isPlaying() && (pauseButton==true)) {
                     //Pause MediaPlayer and Timer display
                     pauseButton = true;//Pauses within playCombo
-                    audioIndex = 0;
+                    audioIndex = 400;
                     mp.reset();
                     resetTimer();
                     Context context = getApplicationContext();
@@ -120,6 +121,7 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
                     pauseButton = false;
                     startTimer();
                     playCombo(audioIndex);
+
                 }
             }
         });
@@ -166,12 +168,12 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
                  pauseTimer();
                  mp.pause();
              }
-
+/*
             if(audioIndex == (arrayOfAllAudio.length - 1)) {
                 customHandler.removeCallbacks(updateTimerThread);
                 mp.release();//Releases resources associated with MediaPlayer object.
             }
-
+*/
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         } catch (IllegalStateException e) {
@@ -187,6 +189,9 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
             audioIndex++;
 
             playCombo(audioIndex);
+        } else {
+            customHandler.removeCallbacks(updateTimerThread);
+            mp.release();//Releases resources associated with MediaPlayer object.
         }
     }
 
