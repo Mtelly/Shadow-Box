@@ -13,6 +13,7 @@ public class ShadowBoxActivity extends AppCompatActivity {
 
     private static final String TAG = "MyActivity :";
     private TextView mBoxTextView;
+    private Button mTraining;
     private Button mEasy;
     private Button mMediumButton;
     private Button mHard;
@@ -24,30 +25,37 @@ public class ShadowBoxActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shadow_box);
         mBoxTextView = (TextView) findViewById(R.id.boxTextView);
+        mTraining = (Button) findViewById(R.id.showTrainingButton);
         mHard = (Button) findViewById(R.id.showHardButton);
         mMediumButton = (Button) findViewById(R.id.showMediumButton);
         mEasy = (Button) findViewById(R.id.showEasyButton);
         mSouthpaw = (Switch) findViewById(R.id.southpaw);
 
-//Goes to a completely different activity.
-        mEasy.setOnClickListener(new View.OnClickListener() {
+        mTraining.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startEasy(0);
             }
         });
 
-        mMediumButton.setOnClickListener( new View.OnClickListener() {
+        mEasy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startEasy(1);
             }
         });
 
-        mHard.setOnClickListener(new View.OnClickListener() {
+        mMediumButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startEasy(2);
+            }
+        });
+
+        mHard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startEasy(3);
             }
         });
 

@@ -29,7 +29,7 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
     private Button mEasy;
     private Button mReset;
     public MediaPlayer mp;
-    private int audioIndex = 400;
+    private int audioIndex = 0;
     private String[] arrayOfAllAudio = null;
     private int[] arrayOfAllAudioInt = null;
     private String[] multipleCombination = null;
@@ -57,7 +57,7 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
         mReset = (Button) findViewById(R.id.showResetButton);
 
         Bundle data = getIntent().getExtras();
-        Preference settings = (Preference) data.getParcelable("settings");
+        final Preference settings = (Preference) data.getParcelable("settings");
 
         //Setting our combinations
         multipleCombination = mCombinationsList.getManyCombinations();
@@ -89,7 +89,7 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
                 if(!mp.isPlaying() && (pauseButton==true)) {
                     //Pause MediaPlayer and Timer display
                     pauseButton = true;//Pauses within playCombo
-                    audioIndex = 400;
+                    audioIndex = 0;
                     mp.reset();
                     resetTimer();
                     Context context = getApplicationContext();
@@ -120,6 +120,7 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
                 if(!mp.isPlaying()) {
                     pauseButton = false;
                     startTimer();
+                    Log.d(TAG, "difficulty :"+settings.getDifficulty());
                     playCombo(audioIndex);
 
                 }

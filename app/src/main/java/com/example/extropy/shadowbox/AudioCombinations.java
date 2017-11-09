@@ -44,6 +44,7 @@ public class AudioCombinations {
         return boxingSoundMP;
     }
 
+    //NOTE: Create a hash table instead of explicitly declaring each strike.
     public int[] getIntegerSound(Context currentContext, String[] combination){
         int[] playThis = new int[combination.length];
 
@@ -67,7 +68,6 @@ public class AudioCombinations {
             else {
                 playThis[x] = allResourcesArray[5];//Boxing bell
             }
-
         }
 
         return playThis;
