@@ -7,7 +7,11 @@ import java.util.Random;
 
 
 public class BoxingCombinations {
-    //Fields
+    //Training
+    //Training Southpaw
+
+    //Easy Combinations
+    //Easy Combinations Southpaw
     private String[] easyCombinations = {"1-1",
                                           "1-1-2",
                                           "1-2",
@@ -15,13 +19,12 @@ public class BoxingCombinations {
                                           "1-2-1-2",
                                           "1-2-3-2",
                                           "1-6-3-2"};
-    //southPawEasyCombo = 1-1, ....., "1-2-[3]-2", "1-[6]-3-2"
+    //Medium Combinations
+    //Medium Combinations Southpaw
 
-    //mediumCombinations
-    //southPawMediumCombo
+    //Hard Combinations
+    //Hard Combinations Southpaw
 
-    //hardCombinations
-    //southPawHardCombo
     private String startOrFinishBell = "START_OR_FINISH";
 
     private String[] restTime = {"stop_one_second",
@@ -30,6 +33,8 @@ public class BoxingCombinations {
                                  "stop_four_second",
                                  "stop_five_second",
                                  "stop_ten_second" };
+
+
 
     private int difficulty = 0;
     private Random randomGenerator = new Random();

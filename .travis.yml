@@ -3,4 +3,9 @@ android:
   components:
     - build-tools-'25.0.0'
     - android-24
-    - extra
+
+    # Support library
+    - extra-android-support
+
+script:
+- chmod +x ./gradlew    
