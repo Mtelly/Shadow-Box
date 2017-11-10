@@ -1,12 +1,17 @@
 package com.example.extropy.shadowbox;
 
 
+import android.util.Log;
+
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 
 public class BoxingCombinations {
+    public final String TAG = ShadowBoxActivity.class.getSimpleName();
 
     //ORIGINAL ARRAY
     private String[] easyCombinations = {"1-1",
@@ -42,8 +47,8 @@ public class BoxingCombinations {
             "1-1-3-4+", "2-3+-4+-3", "1-1+-1-2", "1-3-2-3+", "1-6-3-2", "1-2-5-3-2" };
 
     //Hard Combinations
-    String[] hardCombinations = { "1-2-/1/-2", "1-2-/1/-2-3-2", "1-2-@@3@@-2", "1-2-@@3@@-/2/-3-2", "1-2-@@3@@-3-2-3",
-            "1-2-3-@@2@@-3-2", "1-/1/-2-1-1", "1-/1/-2-3-2", "1#", "1+-^", "4+##", "3#", "2-#-2", "1#-2",
+    String[] hardCombinations = { "1-2-!1!-2", "1-2-!1!-2-3-2", "1-2-@@3@@-2", "1-2-@@3@@-!2!-3-2", "1-2-@@3@@-3-2-3",
+            "1-2-3-@@2@@-3-2", "1-!1!-2-1-1", "1-!1!-2-3-2", "1#", "1+-^", "4+##", "3#", "2-#-2", "1#-2",
             "1-3-2", "1+-2", "1-2+", "1-2+-3", "4-1+", "^-2", "1&-3", "6-2", "2-2", "CR-6-5-2-1#", "CR-6-3", "CR-6-3#", "CR-4+-3+-2-1-2",
             "CR-rs-5", "CR-1-2-3+-#-4+-4-1", "CR-1-4+-3+-6-1", "CR-4+-6-3-2", "1-^-1","1-^-1-2" };
 
@@ -62,8 +67,6 @@ public class BoxingCombinations {
                                  "stop_four_second",
                                  "stop_five_second",
                                  "stop_ten_second" };
-
-
 
     private int difficulty = 0;
     private Random randomGenerator = new Random();
@@ -167,4 +170,22 @@ public class BoxingCombinations {
         return ret;
     }
 
+    public void logPrint(String[] test){
+
+        Hashtable<String, Integer> numbers = new Hashtable<String, Integer>();
+        for(String str: test){
+            int x = 1;
+            if(numbers.get(str) == null) {
+                numbers.put(str, x);
+            } else {
+                x = numbers.get(str);
+                numbers.put(str, ++x);
+            }
+        }
+        Set<String> keys = numbers.keySet();
+        for(String key: keys){
+            System.out.println("Value of "+key+" is: "+numbers.get(key));
+            Log.d(TAG,"Value of "+key+" is: "+numbers.get(key));
+        }
+    }
 }

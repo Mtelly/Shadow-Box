@@ -56,12 +56,14 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
         mEasy = (Button) findViewById(R.id.showEasyButton);
         mReset = (Button) findViewById(R.id.showResetButton);
 
+        //Preferences
         Bundle data = getIntent().getExtras();
         final Preference settings = (Preference) data.getParcelable("settings");
 
         //Setting our combinations
         multipleCombination = mCombinationsList.getManyCombinations();
         arrayOfAllAudio = mCombinationsList.splitPunchString(multipleCombination);
+        mCombinationsList.logPrint(arrayOfAllAudio);//Testing Log Print
 
         //Should be used while setOnCompletion is playing.
         mp = mAudioCombinations.getSound(getApplicationContext(), arrayOfAllAudio[audioIndex]);
