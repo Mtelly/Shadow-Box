@@ -3,6 +3,7 @@ package com.example.extropy.shadowbox;
 
 import android.util.Log;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -92,9 +93,16 @@ public class BoxingCombinations {
                                  "stop_five_second",
                                  "stop_ten_second" };
 
-    private int difficulty = 0;
-    private Random randomGenerator = new Random();
-    public int[] combinationLengthInt;
+    private int difficulty;
+    private Random randomGenerator;
+    private int[] combinationLengthInt;
+    private boolean isSouthpaw;
+
+    public BoxingCombinations(int difficulty, boolean isSouthpaw){
+        this.difficulty = difficulty;
+        this.isSouthpaw = isSouthpaw;
+        randomGenerator = new Random();
+    }
 
     //Methods
     /*Returns an String array with each individual punch and restTime for every element element*/
@@ -150,35 +158,64 @@ public class BoxingCombinations {
 
     public String[] getManyCombinations() {
 //String[] oneHundredCombinations = new String[202];
-        String[] oneHundredCombinations = new String[10002];
+        int numberOfCombinations = 0;
+        String[] addedCombinations = null;
+
+        switch(difficulty) {
+            case 0:
+                numberOfCombinations = 100;
+                if(isSouthpaw){
+                 addedCombinations = trainingComponentsSP;
+                } else {
+                    addedCombinations = trainingComponents;
+                }
+                break;
+            case 1:
+                numberOfCombinations = 100;
+                if(isSouthpaw){
+                    addedCombinations = easyCombinationsSP;
+                } else {
+                    addedCombinations = easyCombinations2;
+                }
+                break;
+            case 2:
+                numberOfCombinations = 200;
+                if(isSouthpaw){
+                    addedCombinations = (String[]) concatenate(easyCombinationsSP, mediumCombinationsSP);
+                } else {
+                    addedCombinations = (String[]) concatenate(easyCombinations, mediumCombinations);
+                }
+                break;
+            case 3:
+                numberOfCombinations = 300;
+                if(isSouthpaw){
+                    addedCombinations = (String[]) concatenate(easyCombinationsSP, mediumCombinationsSP);
+                    addedCombinations = (String[]) concatenate(addedCombinations, hardCombinationsSP);
+                } else {
+                    addedCombinations = (String[]) concatenate(easyCombinations, mediumCombinations);
+                    addedCombinations = (String[]) concatenate(addedCombinations, hardCombinations);
+                }
+                break;
+            default: numberOfCombinations = 100;
+        }
+
+        String[] hundredsOfCombos = new String[numberOfCombinations + 2];
         int count = 0;
 
-        while(count < oneHundredCombinations.length){
+        while(count < hundredsOfCombos.length) {
 
-            if(count == 0){
-
-                oneHundredCombinations[count] = startOrFinishBell;
-                count += 1;
-
-            }
-            else if(count == oneHundredCombinations.length - 1){
-
-                oneHundredCombinations[count] = startOrFinishBell;
-                count += 1;
-
+            if((count == 0) || (count == hundredsOfCombos.length - 1)){
+                hundredsOfCombos[count++] = startOrFinishBell;
             }
             else {
                 /*Assigns a random combo. Then gives a rest time afterward.*/
-//                int randomNumber = randomGenerator.nextInt(easyCombinations.length);
-//                oneHundredCombinations[count] = easyCombinations[randomNumber];
-                int randomNumber = randomGenerator.nextInt(allComponents.length);
-                oneHundredCombinations[count] = allComponents[randomNumber];
-                oneHundredCombinations[count + 1] = restTime[0];
-                count += 2;
+                int randomNumber = randomGenerator.nextInt(addedCombinations.length);
+                hundredsOfCombos[count] = allComponents[randomNumber];
+                hundredsOfCombos[++count] = restTime[0];
+                //count += 2;
             }
         }
-
-        return oneHundredCombinations;
+        return hundredsOfCombos;
     }
 
     public static int[] convertIntegers(List<Integer> integers)
@@ -212,5 +249,17 @@ public class BoxingCombinations {
         for(String key: keys){
             Log.d(TAG,"Value of "+key+" is: "+numbers.get(key));
         }
+    }
+
+    public <T> T[] concatenate(T[] a, T[] b) {
+        int aLen = a.length;
+        int bLen = b.length;
+
+        @SuppressWarnings("unchecked")  //Fear not, we will always concatenate String arrays.
+        T[] c = (T[]) Array.newInstance(a.getClass().getComponentType(), aLen+bLen);
+        System.arraycopy(a, 0, c, 0, aLen);
+        System.arraycopy(b, 0, c, aLen, bLen);
+
+        return c;
     }
 }

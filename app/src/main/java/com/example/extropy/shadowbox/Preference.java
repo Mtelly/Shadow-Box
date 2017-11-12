@@ -16,7 +16,7 @@ public class Preference implements Parcelable {
         this.difficulty = difficulty;
     }
 
-    public boolean isSouthpaw() {
+    public boolean getSouthpaw() {
         return southpaw;
     }
 

@@ -20,7 +20,7 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
     public final String TAG = ShadowBoxActivity.class.getSimpleName();
 
     //Classes needed for combinations
-    private BoxingCombinations mCombinationsList = new BoxingCombinations();
+    private BoxingCombinations mCombinationsList;// = new BoxingCombinations();
     private AudioCombinations mAudioCombinations = new AudioCombinations();
 
     private TextView mBoxTextView;
@@ -34,7 +34,6 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
     private int[] arrayOfAllAudioInt = null;
     private String[] multipleCombination = null;
     private Uri[] uris;
-    private int difficulty = 0;
     private boolean pauseButton = false;
 
     //Timer attributes
@@ -61,6 +60,7 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
         final Preference settings = (Preference) data.getParcelable("settings");
 
         //Setting our combinations
+         mCombinationsList = new BoxingCombinations(settings.getDifficulty(), settings.getSouthpaw());
         multipleCombination = mCombinationsList.getManyCombinations();
         arrayOfAllAudio = mCombinationsList.splitPunchString(multipleCombination);
         mCombinationsList.logPrint(arrayOfAllAudio);//Testing Log Print
