@@ -225,9 +225,7 @@ public class BoxingCombinations {
 
         for (int i=0; i < ret.length; i++)
         {
-
             ret[i] = integers.get(i).intValue();
-
         }
 
         return ret;
@@ -239,7 +237,10 @@ public class BoxingCombinations {
         for(String str: test){
             int x = 1;
             if(numbers.get(str) == null) {
+
                 numbers.put(str, x);
+
+
             } else {
                 x = numbers.get(str);
                 numbers.put(str, ++x);
