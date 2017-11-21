@@ -13,7 +13,43 @@ public class AudioCombinations {
                                         R.raw.left_hook,
                                         R.raw.right_uppercut,
                                         R.raw.boxingbell,
-                                        R.raw.stop_one_second };
+                                        R.raw.stop_one_second,//Original
+                                        R.raw.back_step,
+                                        R.raw.jab_backstep,
+                                        R.raw.right_hook,
+                                        R.raw.ppcw,
+                                        R.raw.cross_body,
+                                        R.raw.left_uppercut,
+                                        R.raw.close_range,
+                                        R.raw.left_hook_body,
+                                        R.raw.fake_cross,
+                                        R.raw.left_hook_rollunder,
+                                        R.raw.cross_rollingunder,
+                                        R.raw.left_uppercut,
+                                        R.raw.pivot_ccw_lefthook_body,
+                                        R.raw.right_hook_body,
+                                        R.raw.right_hook,
+                                        R.raw.leanaway_cross,
+                                        R.raw.rightstep,
+                                        R.raw.pivot_ccw_jab,
+                                        R.raw.low_righthook
+                                        R.raw.slip_left,
+                                        R.raw.jab_to_body,
+                                        R.raw.right_hook_body,
+                                        R.raw.fake_jab,
+                                        R.raw.left_step,
+                                        R.raw.pcw,
+                                        R.raw.jab_pcw,
+                                        R.raw.low_left_hook,
+                                        R.raw.righthook_rollunder,
+                                        R.raw.low_cross,
+                                        R.raw.lean_jab,
+                                        R.raw.slip_right,
+                                        R.raw.left_hook_body,
+                                        R.raw.righthook_pccw,
+                                        R.raw.lefthook_pcw,
+                                        R.raw.righthook_body_pccw
+                                        };
 
 
     public MediaPlayer getSound(Context currentContext, String combination){
