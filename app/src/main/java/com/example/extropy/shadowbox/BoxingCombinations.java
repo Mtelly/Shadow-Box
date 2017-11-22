@@ -118,7 +118,7 @@ public class BoxingCombinations {
         while(iterateStringArray < combination.length) {
 
             int testBell = combination[iterateStringArray].compareTo("START_OR_FINISH");
-            int testRest = combination[iterateStringArray].compareTo("stop_one_second");
+            int testRest = combination[iterateStringArray].compareTo("stop_two_second");
 
             if((testBell != 0) && (testRest != 0)) {
 
@@ -211,7 +211,7 @@ public class BoxingCombinations {
                 /*Assigns a random combo. Then gives a rest time afterward.*/
                 int randomNumber = randomGenerator.nextInt(addedCombinations.length);
                 hundredsOfCombos[count] = allComponents[randomNumber];
-                hundredsOfCombos[++count] = restTime[0];
+                hundredsOfCombos[++count] = restTime[1];
                 //count += 2;
             }
         }
@@ -248,7 +248,7 @@ public class BoxingCombinations {
         }
         Set<String> keys = numbers.keySet();
         for(String key: keys){
-            Log.d(TAG,"Value of "+key+" is: "+numbers.get(key));
+            //Log.d(TAG,"Value of "+key+" is: "+numbers.get(key));
         }
     }
 
