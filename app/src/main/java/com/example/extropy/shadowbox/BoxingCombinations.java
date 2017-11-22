@@ -107,7 +107,13 @@ public class BoxingCombinations {
     //Methods
     /*Returns an String array with each individual punch and restTime for every element element*/
     public String[] splitPunchString(String[] combination) {
-
+/*
+        for(String combo: combination){
+            if(combo.compareTo("stop_two_second") == 0){
+                Log.d(TAG,"HIT stop_two_second");
+            }
+        }
+        */
         String[] containsHyphen;
         String bellOrStop;
         List<String> removedHyphenList = new ArrayList<String>();
@@ -118,7 +124,7 @@ public class BoxingCombinations {
         while(iterateStringArray < combination.length) {
 
             int testBell = combination[iterateStringArray].compareTo("START_OR_FINISH");
-            int testRest = combination[iterateStringArray].compareTo("stop_two_second");
+            int testRest = combination[iterateStringArray].compareTo("stop_one_second");
 
             if((testBell != 0) && (testRest != 0)) {
 
@@ -141,12 +147,9 @@ public class BoxingCombinations {
 
             }
             else {
-
-                bellOrStop = combination[iterateStringArray];
+                bellOrStop = combination[iterateStringArray++];
                 removedHyphenList.add(bellOrStop);
                 combinationLength.add(1);
-                iterateStringArray++;
-
             }
         }
 
@@ -210,11 +213,17 @@ public class BoxingCombinations {
             else {
                 /*Assigns a random combo. Then gives a rest time afterward.*/
                 int randomNumber = randomGenerator.nextInt(addedCombinations.length);
-                hundredsOfCombos[count] = allComponents[randomNumber];
-                hundredsOfCombos[++count] = restTime[1];
+                //hundredsOfCombos[count] = allComponents[randomNumber];
+                hundredsOfCombos[count++] = addedCombinations[randomNumber];
+                hundredsOfCombos[count++] = restTime[0];
                 //count += 2;
             }
         }
+        //Log.d(TAG, "restTime[0] :"+restTime[0]);
+        for (String str: hundredsOfCombos) {
+            Log.d(TAG, "hundredsOfCombos :"+str);
+        }
+
         return hundredsOfCombos;
     }
 

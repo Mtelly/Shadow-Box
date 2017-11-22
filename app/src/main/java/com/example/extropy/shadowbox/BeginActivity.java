@@ -60,7 +60,7 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
         final Preference settings = (Preference) data.getParcelable("settings");
 
         //Setting our combinations
-         mCombinationsList = new BoxingCombinations(settings.getDifficulty(), settings.getSouthpaw());
+        mCombinationsList = new BoxingCombinations(settings.getDifficulty(), settings.getSouthpaw());
         multipleCombination = mCombinationsList.getManyCombinations();
         arrayOfAllAudio = mCombinationsList.splitPunchString(multipleCombination);
         mCombinationsList.logPrint(arrayOfAllAudio);//Testing Log Print

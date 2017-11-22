@@ -106,6 +106,7 @@ public class AudioCombinations {
                 playThis[x] = allResourcesArray[4];//Boxing bell
             }
             else if(combination[x].compareTo("stop_one_second") == 0){
+                Log.d(TAG,"ONE SECOND");
                 playThis[x] = allResourcesArray[5];//Pause one second
             }
             else if(combination[x].compareTo("^") == 0){
