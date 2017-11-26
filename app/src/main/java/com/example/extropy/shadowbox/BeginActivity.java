@@ -1,5 +1,6 @@
 package com.example.extropy.shadowbox;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -54,6 +55,15 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
         mPauseButton = (Button) findViewById(R.id.showPauseButton);
         mEasy = (Button) findViewById(R.id.showEasyButton);
         mReset = (Button) findViewById(R.id.showResetButton);
+
+        View decorView = getWindow().getDecorView();
+        // Hide the status bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+        // Remember that you should never show the action bar if the
+        // status bar is hidden, so hide that too if necessary.
+        ActionBar actionBar = getActionBar();
+        //actionBar.hide();
 
         //Preferences
         Bundle data = getIntent().getExtras();
