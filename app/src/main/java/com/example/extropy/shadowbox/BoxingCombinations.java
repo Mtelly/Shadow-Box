@@ -219,10 +219,6 @@ public class BoxingCombinations {
                 //count += 2;
             }
         }
-        //Log.d(TAG, "restTime[0] :"+restTime[0]);
-        for (String str: hundredsOfCombos) {
-            Log.d(TAG, "hundredsOfCombos :"+str);
-        }
 
         return hundredsOfCombos;
     }
@@ -265,7 +261,7 @@ public class BoxingCombinations {
         int aLen = a.length;
         int bLen = b.length;
 
-        @SuppressWarnings("unchecked")  //Fear not, we will always concatenate String arrays.
+        @SuppressWarnings("unchecked")
         T[] c = (T[]) Array.newInstance(a.getClass().getComponentType(), aLen+bLen);
         System.arraycopy(a, 0, c, 0, aLen);
         System.arraycopy(b, 0, c, aLen, bLen);

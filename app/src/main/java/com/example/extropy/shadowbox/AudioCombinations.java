@@ -90,7 +90,6 @@ public class AudioCombinations {
         for(int x = 0; x < combination.length; x++) {
 
             if (combination[x].compareTo("1") == 0) {
-                Log.d(TAG,"JAB");
                 playThis[x] = allResourcesArray[0];//Jab
             }
             else if (combination[x].compareTo("2") == 0) {
@@ -106,7 +105,6 @@ public class AudioCombinations {
                 playThis[x] = allResourcesArray[4];//Boxing bell
             }
             else if(combination[x].compareTo("stop_one_second") == 0){
-                Log.d(TAG,"ONE SECOND");
                 playThis[x] = allResourcesArray[5];//Pause one second
             }
             else if(combination[x].compareTo("^") == 0){
@@ -215,7 +213,6 @@ public class AudioCombinations {
                 playThis[x] = allResourcesArray[40];//Right hook to the body then pivot counter clockwise
             }
             else if(combination[x].compareTo("stop_two_second") == 0){
-                Log.d(TAG,"TWO SECONDS");
                 playThis[x] = allResourcesArray[41];//Pause two second
             }
             else {

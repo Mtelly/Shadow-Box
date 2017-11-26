@@ -132,7 +132,6 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
                 if(!mp.isPlaying()) {
                     pauseButton = false;
                     startTimer();
-                    Log.d(TAG, "difficulty :"+settings.getDifficulty());
                     playCombo(audioIndex);
 
                 }
