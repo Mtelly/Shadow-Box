@@ -1,7 +1,5 @@
-package com.example.extropy.shadowbox;
+package tech.extropy.shadowbox;
 
-
-import android.util.Log;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;

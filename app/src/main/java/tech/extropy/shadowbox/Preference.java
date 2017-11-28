@@ -1,4 +1,4 @@
-package com.example.extropy.shadowbox;
+package tech.extropy.shadowbox;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -49,7 +49,7 @@ public class Preference implements Parcelable {
     }
 
     @SuppressWarnings("unused")
-    public static final Parcelable.Creator<Preference> CREATOR = new Parcelable.Creator<Preference>() {
+    public static final Creator<Preference> CREATOR = new Creator<Preference>() {
 
         @Override
         public Preference createFromParcel(Parcel in) {

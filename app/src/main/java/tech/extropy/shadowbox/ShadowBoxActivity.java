@@ -1,14 +1,16 @@
-package com.example.extropy.shadowbox;
+package tech.extropy.shadowbox;
 
 import android.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.content.Intent;
+
+import tech.extropy.shadowbox.R;
 
 public class ShadowBoxActivity extends AppCompatActivity {
 

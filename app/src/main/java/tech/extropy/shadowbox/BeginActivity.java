@@ -1,20 +1,22 @@
-package com.example.extropy.shadowbox;
+package tech.extropy.shadowbox;
 
 import android.app.ActionBar;
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-import android.media.MediaPlayer.OnCompletionListener;
 import android.widget.Toast;
+
+import tech.extropy.shadowbox.R;
+
 import java.io.IOException;
 
 public class BeginActivity extends AppCompatActivity implements OnCompletionListener {
@@ -84,7 +86,7 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
         /*We need to convert the arrayOfAllAudioInt to a URI array.*/
         uris = new Uri[arrayOfAllAudioInt.length];
         for(int x = 0; x < arrayOfAllAudioInt.length; x++) {
-            uris[x] = Uri.parse("android.resource://com.example.extropy.shadowbox/" + arrayOfAllAudioInt[x]);
+            uris[x] = Uri.parse("android.resource://tech.extropy.shadowbox/" + arrayOfAllAudioInt[x]);
         }
 
         //Media Player

@@ -1,4 +1,4 @@
-package com.example.extropy.shadowbox;
+package tech.extropy.shadowbox;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

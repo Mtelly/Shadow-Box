@@ -1,8 +1,9 @@
-package com.example.extropy.shadowbox;
+package tech.extropy.shadowbox;
 
 import android.content.Context;
 import android.media.MediaPlayer;
-import android.util.Log;
+
+import tech.extropy.shadowbox.R;
 
 
 public class AudioCombinations {
