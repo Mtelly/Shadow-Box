@@ -3,9 +3,6 @@ package tech.extropy.shadowbox;
 import android.content.Context;
 import android.media.MediaPlayer;
 
-import tech.extropy.shadowbox.R;
-
-
 public class AudioCombinations {
 
     public MediaPlayer boxingSoundMP;
@@ -84,7 +81,6 @@ public class AudioCombinations {
         return boxingSoundMP;
     }
 
-    //NOTE: Create a hash table instead of explicitly declaring each strike.
     public int[] getIntegerSound(Context currentContext, String[] combination){
         int[] playThis = new int[combination.length];
 

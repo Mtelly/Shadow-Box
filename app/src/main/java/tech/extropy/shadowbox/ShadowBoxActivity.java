@@ -10,8 +10,6 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import tech.extropy.shadowbox.R;
-
 public class ShadowBoxActivity extends AppCompatActivity {
 
     private static final String TAG = "MyActivity :";
@@ -22,7 +20,6 @@ public class ShadowBoxActivity extends AppCompatActivity {
     private Button mHard;
     private Switch mSouthpaw;
 
-    //private Preference settings;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,13 +32,8 @@ public class ShadowBoxActivity extends AppCompatActivity {
         mSouthpaw = (Switch) findViewById(R.id.southpaw);
 
         View decorView = getWindow().getDecorView();
-        // Hide the status bar.
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
-        // Remember that you should never show the action bar if the
-        // status bar is hidden, so hide that too if necessary.
-        ActionBar actionBar = getActionBar();
-        //actionBar.hide();
 
         mTraining.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,9 +63,8 @@ public class ShadowBoxActivity extends AppCompatActivity {
             }
         });
 
-        //Keep device awake
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-    }//onCreate()
+    }
 
     private void startEasy(int difficulty) {
         Intent intent = new Intent(this, BeginActivity.class);

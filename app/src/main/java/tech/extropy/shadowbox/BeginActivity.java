@@ -14,18 +14,13 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import tech.extropy.shadowbox.R;
-
 import java.io.IOException;
 
 public class BeginActivity extends AppCompatActivity implements OnCompletionListener {
     public final String TAG = ShadowBoxActivity.class.getSimpleName();
 
-    //Classes needed for combinations
-    private BoxingCombinations mCombinationsList;// = new BoxingCombinations();
+    private BoxingCombinations mCombinationsList;
     private AudioCombinations mAudioCombinations = new AudioCombinations();
-
     private TextView mBoxTextView;
     private Button mPlay;
     private Button mPauseButton;
@@ -38,8 +33,6 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
     private String[] multipleCombination = null;
     private Uri[] uris;
     private boolean pauseButton = false;
-
-    //Timer attributes
     private TextView timerValue;
     private long startTime = 0L;
     private Handler customHandler = new Handler();
@@ -50,65 +43,49 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_easy);
         setContentView(R.layout.content_easy);
         mBoxTextView = (TextView) findViewById(R.id.boxTextView);
         mPlay = (Button) findViewById(R.id.showBoxButton);
         mPauseButton = (Button) findViewById(R.id.showPauseButton);
         mEasy = (Button) findViewById(R.id.showEasyButton);
         mReset = (Button) findViewById(R.id.showResetButton);
+        timerValue = (TextView) findViewById(R.id.timerValue);
 
         View decorView = getWindow().getDecorView();
-        // Hide the status bar.
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
-        // Remember that you should never show the action bar if the
-        // status bar is hidden, so hide that too if necessary.
-        ActionBar actionBar = getActionBar();
-        //actionBar.hide();
 
-        //Preferences
         Bundle data = getIntent().getExtras();
         final Preference settings = (Preference) data.getParcelable("settings");
 
-        //Setting our combinations
         mCombinationsList = new BoxingCombinations(settings.getDifficulty(), settings.getSouthpaw());
         multipleCombination = mCombinationsList.getManyCombinations();
         arrayOfAllAudio = mCombinationsList.splitPunchString(multipleCombination);
-        mCombinationsList.logPrint(arrayOfAllAudio);//Testing Log Print
 
-        //Should be used while setOnCompletion is playing.
+
         mp = mAudioCombinations.getSound(getApplicationContext(), arrayOfAllAudio[audioIndex]);
 
-        //Contains the array of resources as Strings
         arrayOfAllAudioInt = mAudioCombinations.getIntegerSound(getApplicationContext(), arrayOfAllAudio);
 
-        /*We need to convert the arrayOfAllAudioInt to a URI array.*/
         uris = new Uri[arrayOfAllAudioInt.length];
         for(int x = 0; x < arrayOfAllAudioInt.length; x++) {
             uris[x] = Uri.parse("android.resource://tech.extropy.shadowbox/" + arrayOfAllAudioInt[x]);
         }
 
-        //Media Player
         mp = new MediaPlayer();
 
-        //Listener
-        mp.setOnCompletionListener(this); // Important
-
-        timerValue = (TextView) findViewById(R.id.timerValue);
+        mp.setOnCompletionListener(this);
 
         mReset.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 if(!mp.isPlaying() && (pauseButton==true)) {
-                    //Pause MediaPlayer and Timer display
-                    pauseButton = true;//Pauses within playCombo
+                    pauseButton = true;
                     audioIndex = 0;
                     mp.reset();
                     resetTimer();
                     Context context = getApplicationContext();
 
-                    //Display Toast
                     CharSequence text = "Reset";
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context, text, duration);
@@ -135,13 +112,10 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
                     pauseButton = false;
                     startTimer();
                     playCombo(audioIndex);
-
                 }
             }
         });
 
-
-        //Keep device awake
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
@@ -151,12 +125,10 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
         finish();
     }
 
-    //TIMER
     private Runnable updateTimerThread = new Runnable() {
         public void run() {
             timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
             updatedTime = timeSwapBuff + timeInMilliseconds;
-
             int secs = (int) (updatedTime / 1000);
             int mins = secs / 60;
             secs = secs % 60;
@@ -164,10 +136,9 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
             timerValue.setText("" + mins + ":"
                     + String.format("%02d", secs) + ":"
                     + String.format("%03d", milliseconds));
-
             customHandler.postDelayed(this, 0);
         }
-    };//Runnable()
+    };
 
     public void playCombo(int audioIndex){
         try {
@@ -175,19 +146,12 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
             mp.reset();
             mp.setDataSource(getApplicationContext(), uris[audioIndex]);
             mp.prepare();
-
             mp.start();
 
              if(pauseButton == true) {
                  pauseTimer();
                  mp.pause();
              }
-/*
-            if(audioIndex == (arrayOfAllAudio.length - 1)) {
-                customHandler.removeCallbacks(updateTimerThread);
-                mp.release();//Releases resources associated with MediaPlayer object.
-            }
-*/
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         } catch (IllegalStateException e) {
@@ -201,40 +165,34 @@ public class BeginActivity extends AppCompatActivity implements OnCompletionList
     public void onCompletion(MediaPlayer arg0) {
         if (audioIndex < (arrayOfAllAudio.length - 1)) {
             audioIndex++;
-
             playCombo(audioIndex);
         } else {
             customHandler.removeCallbacks(updateTimerThread);
-            mp.release();//Releases resources associated with MediaPlayer object.
+            mp.release();
         }
     }
 
-    //startTimer
     public void startTimer() {
         startTime = SystemClock.uptimeMillis();
         mPlay.postDelayed(updateTimerThread, 0);
     }
 
-    //pauseTimer
     public void pauseTimer() {
         timeSwapBuff += timeInMilliseconds;
         customHandler.removeCallbacks(updateTimerThread);
     }
 
-    //resetTimer
     public void resetTimer() {
         customHandler.removeCallbacks(updateTimerThread);
-        //Reset Timer
         startTime = 0L;
         timeInMilliseconds = 0L;
         timeSwapBuff = 0L;
         updatedTime = 0L;
-
-        //Change timer display
         pauseButton = false;
         int mins = 0;
         int secs = 0;
         int milliseconds = 0;
+
         timerValue.setText("" + mins + ":"
                 + String.format("%02d", secs) + ":"
                 + String.format("%03d", milliseconds));

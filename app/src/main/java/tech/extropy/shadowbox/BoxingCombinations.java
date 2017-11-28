@@ -12,7 +12,7 @@ import java.util.Set;
 public class BoxingCombinations {
     public final String TAG = "TAG";
 
-    //ORIGINAL ARRAY
+
     private String[] easyCombinations = {"1-1",
             "1-1-2",
             "1-2",
@@ -20,62 +20,30 @@ public class BoxingCombinations {
             "1-2-1-2",
             "1-2-3-2",
             "1-6-3-2"};
-    //View all unique orthodox strikes within log
-    String[] allComponents = {
-            "1", "2", "lc", "3", "lh", "4", "5", "6", "#", "##", "%",
-            "%%", "^", "1^", "1-^", "1&", "2&", "*", "**", "1-**", "1-*", "**-1", "*-1",
-            "1", "2", "lc", "3r", "lr", "4l", "5r", "6l", "#", "##", "%",
-            "%%", "^", "1^", "1-^", "1&", "2&", "*", "**", "1-**", "1-*", "**-1", "*-1",//Training Components SP
-            "1-1", "1-2", "1-1-2", "1-2-1", "1-2-1-2", "1-2-3-2", "1-6-3-2",
-            "1-3", "6-3", "5-2", "5-2-3", "1-2-3", "1-1-2-3", "1-1-2-3-2",
-            "1-3r", "6l-3r", "5r-2", "5r-2-3r", "1-2-3r", "1-1-2-3r", "1-1-2-3r-2",
-            "1-1", "1-2", "1-1-2", "1-2-1", "1-2-1-2", "1-2-3r-2", "1-6l-3r-2",//Easy Combinations SP
-            "1-1-4+", "1-1+-4", "3-3+-4", "1-3-3-5", "1-1-3-1-2",
-            "1-1-3-4+", "2-3+-4+-3", "1-1+-1-2", "1-3-2-3+", "1-6-3-2", "1-2-5-3-2",
-            "1-1-4l+", "1-1+-4l", "3r-3r+-4l", "1-3r-3r-5r", "1-1-3r-1-2",
-            "1-1-3r-4l+", "2-3r+-4l+-3r", "1-1+-1-2", "1-3r-2-3r+", "1-6l-3r-2", "1-2-5r-3r-2",//Medium SP
-            "1-2-!1!-2", "1-2-!1!-2-3-2", "1-2-@@3@@-2", "1-2-@@3@@-!2!-3-2", "1-2-@@3@@-3-2-3",
-            "1-2-3-@@2@@-3-2", "1-!1!-2-1-1", "1-!1!-2-3-2", "1#", "1+-^", "4+##", "3#", "2-#-2", "1#-2",
-            "1-3-2", "1+-2", "1-2+", "1-2+-3", "4-1+", "^-2", "1&-3", "6-2", "2-2", "CR-6-5-2-1#", "CR-6-3", "CR-6-3#", "CR-4+-3+-2-1-2",
-            "CR-rs-5", "CR-1-2-3+-#-4+-4-1", "CR-1-4+-3+-6-1", "CR-4+-6-3-2", "1-^-1","1-^-1-2",
-            "1-2-!1!-2", "1-2-!1!-2-3r-2", "1-2-@@3r@@-2", "1-2-@@3r@@-!2!-3r-2",
-            "1-2-@@3r@@-3r-2-3r", "1-2-3r-@@2@@-3r-2", "1-!1!-2-1-1", "1-!1!-2-3r-2", "1##",
-            "1+-^", "4l+#", "3r##", "2-##-2", "1##-2", "1-3r-2", "1+-2", "1-2+", "1-2+-3r", "4l-1+",
-            "4l+-6l-3r-2", "^-2", "1&-3r", "6l-2", "2-2", "CR-6l-5r-2-1##", "CR-6l-3r", "CR-6l-3r##", "CR-4l+-3r+-2-1-2",
-            "CR-%%-5r", "CR-1-2-3r+-##-4l+-4l-1", "CR-1-4l+-3r+-6l-1", "1-^-1", "1-^-1-2"//Hard SP
-    };
 
-    //Training
     String[] trainingComponents = {"1", "2", "lc", "3", "lh", "4", "5", "6", "#", "##", "%",
             "%%", "^", "1^", "1-^", "1&", "2&", "*", "**", "1-**", "1-*", "**-1", "*-1"};
 
-    //Training Southpaw
     String[] trainingComponentsSP = {"1", "2", "lc", "3r", "lr", "4l", "5r", "6l", "#", "##", "%",
             "%%", "^", "1^", "1-^", "1&", "2&", "*", "**", "1-**", "1-*", "**-1", "*-1"};
 
-    //Easy Combinations
     String[] easyCombinations2 = {"1-1", "1-2", "1-1-2", "1-2-1", "1-2-1-2", "1-2-3-2", "1-6-3-2",
             "1-3", "6-3", "5-2", "5-2-3", "1-2-3", "1-1-2-3", "1-1-2-3-2"};
 
-    //Easy Combinations Southpaw
     String[] easyCombinationsSP = { "1-3r", "6l-3r", "5r-2", "5r-2-3r", "1-2-3r", "1-1-2-3r", "1-1-2-3r-2",
             "1-1", "1-2", "1-1-2", "1-2-1", "1-2-1-2", "1-2-3r-2", "1-6l-3r-2" };
 
-    //Medium Combinations
     String[] mediumCombinations = { "1-1-4+", "1-1+-4", "3-3+-4", "1-3-3-5", "1-1-3-1-2",
             "1-1-3-4+", "2-3+-4+-3", "1-1+-1-2", "1-3-2-3+", "1-6-3-2", "1-2-5-3-2"	};
 
-    //Medium Combinations Southpaw
     String[] mediumCombinationsSP = { "1-1-4l+", "1-1+-4l", "3r-3r+-4l", "1-3r-3r-5r", "1-1-3r-1-2",
             "1-1-3r-4l+", "2-3r+-4l+-3r", "1-1+-1-2", "1-3r-2-3r+", "1-6l-3r-2", "1-2-5r-3r-2" };
 
-    //Hard Combinations
     String[] hardCombinations = { "1-2-!1!-2", "1-2-!1!-2-3-2", "1-2-@@3@@-2", "1-2-@@3@@-!2!-3-2", "1-2-@@3@@-3-2-3",
             "1-2-3-@@2@@-3-2", "1-!1!-2-1-1", "1-!1!-2-3-2", "1#", "1+-^", "4+##", "3#", "2-#-2", "1#-2",
             "1-3-2", "1+-2", "1-2+", "1-2+-3", "4-1+", "^-2", "1&-3", "6-2", "2-2", "CR-6-5-2-1#", "CR-6-3", "CR-6-3#", "CR-4+-3+-2-1-2",
             "CR-%%-5", "CR-1-2-3+-#-4+-4-1", "CR-1-4+-3+-6-1", "CR-4+-6-3-2", "1-^-1","1-^-1-2" };
 
-    //Hard Combinations Southpaw
     String[] hardCombinationsSP = {"1-2-!1!-2", "1-2-!1!-2-3r-2", "1-2-@@3r@@-2", "1-2-@@3r@@-!2!-3r-2",
             "1-2-@@3r@@-3r-2-3r", "1-2-3r-@@2@@-3r-2", "1-!1!-2-1-1", "1-!1!-2-3r-2", "1##",
             "1+-^", "4l+#", "3r##", "2-##-2", "1##-2", "1-3r-2", "1+-2", "1-2+", "1-2+-3r", "4l-1+",
@@ -102,16 +70,8 @@ public class BoxingCombinations {
         randomGenerator = new Random();
     }
 
-    //Methods
-    /*Returns an String array with each individual punch and restTime for every element element*/
     public String[] splitPunchString(String[] combination) {
-/*
-        for(String combo: combination){
-            if(combo.compareTo("stop_two_second") == 0){
-                Log.d(TAG,"HIT stop_two_second");
-            }
-        }
-        */
+
         String[] containsHyphen;
         String bellOrStop;
         List<String> removedHyphenList = new ArrayList<String>();
@@ -145,9 +105,11 @@ public class BoxingCombinations {
 
             }
             else {
+
                 bellOrStop = combination[iterateStringArray++];
                 removedHyphenList.add(bellOrStop);
                 combinationLength.add(1);
+
             }
         }
 
@@ -158,7 +120,7 @@ public class BoxingCombinations {
     }
 
     public String[] getManyCombinations() {
-//String[] oneHundredCombinations = new String[202];
+
         int numberOfCombinations = 0;
         String[] addedCombinations = null;
 
@@ -209,12 +171,9 @@ public class BoxingCombinations {
                 hundredsOfCombos[count++] = startOrFinishBell;
             }
             else {
-                /*Assigns a random combo. Then gives a rest time afterward.*/
                 int randomNumber = randomGenerator.nextInt(addedCombinations.length);
-                //hundredsOfCombos[count] = allComponents[randomNumber];
                 hundredsOfCombos[count++] = addedCombinations[randomNumber];
                 hundredsOfCombos[count++] = restTime[0];
-                //count += 2;
             }
         }
 
@@ -223,26 +182,23 @@ public class BoxingCombinations {
 
     public static int[] convertIntegers(List<Integer> integers)
     {
-
         int[] ret = new int[integers.size()];
-
         for (int i=0; i < ret.length; i++)
         {
             ret[i] = integers.get(i).intValue();
         }
-
         return ret;
     }
 
     public void logPrint(String[] test){
 
         Hashtable<String, Integer> numbers = new Hashtable<String, Integer>();
+
         for(String str: test){
             int x = 1;
             if(numbers.get(str) == null) {
 
                 numbers.put(str, x);
-
 
             } else {
                 x = numbers.get(str);
